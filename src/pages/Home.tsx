@@ -28,6 +28,23 @@ const Home = () => {
     }
   };
 
+  //   const addTodo = async (text: string) => {
+  //     try {
+  //     } catch (error) {}
+  //   };
+
+  //   type AddFn = (text: string) => Promise<void>;
+
+  const addTodo: AddFn = async (text) => {
+    try {
+      await axios.post(url, { task: text, isDone: false });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      getTodos();
+    }
+  };
+
   useEffect(() => {
     getTodos();
   }, []);
@@ -43,7 +60,7 @@ const Home = () => {
       >
         TodoApp with TypeScript
       </Typography>
-      <AddTodoComp />
+      <AddTodoComp addTodo={addTodo} />
       <TodoList />
     </Container>
   );
