@@ -19,7 +19,7 @@ export const notify = (
   position: SweetPosition
 ) =>
   Swal.fire({
-    title: "Anthony Todo App!",
+    title: "Osman Todo App!",
     text: msg,
     icon: icon,
     timer: 3000,

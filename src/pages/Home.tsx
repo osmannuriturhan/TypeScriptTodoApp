@@ -68,8 +68,14 @@ const Home = () => {
   const deleteTodo: DeleteFn = async (id) => {
     try {
       await axios.delete(`${url}/${id}`);
+      notify("Todo Deleted!", SweetAlertIcons.SUCCESS, SweetPosition.Center);
     } catch (error) {
       console.log(error);
+      notify(
+        "Todo Not Deleted!",
+        SweetAlertIcons.ERROR,
+        SweetPosition.BottomEnd
+      );
     } finally {
       getTodos();
     }
